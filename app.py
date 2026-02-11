@@ -1,21 +1,41 @@
-# 🔗 PulseLink: The E-commerce Content Engine
+ 
+import streamlit as st
 
-### 🚀 The Vision
-PulseLink helps dropshippers maintain a 24/7 social media presence. We automate the journey from a Shopify product page to a viral-ready TikTok video.
+# Set page config for the "Cream" background feel
+st.set_page_config(page_title="PulseLink Prototype", layout="centered")
 
-### 🛠️ Key Features
-* **Shopify Sync:** One-click product data import.
-* **AI Video Creator:** Automatically generates videos with trending music and local slang.
-* **Global Scheduler:** Posts content during peak hours in New York, London, and Lagos.
+# Custom CSS for the Blue and Cream look
+st.markdown("""
+    <style>
+    .stApp { background-color: #FFFDD0; }
+    .stButton>button { 
+        background-color: #007BFF; 
+        color: white; 
+        border-radius: 8px; 
+        width: 100%;
+        height: 3em;
+    }
+    h1 { color: #003366; }
+    </style>
+    """, unsafe_allow_name=True)
 
-### 📈 Current Status
-* **Stage:** Prototype / Idea Phase
-* **Goal:** Currently applying for the TEF 2026 Grant to hire a technical team and scale globally.
+st.title("🔗 PulseLink")
+st.subheader("AI Automation for Global Dropshippers")
 
-### 💻 Built With
-* **Python** (Backend Logic)
-* **Streamlit** (User Interface)
-* **GitHub** (Version Control)
+st.write("---")
 
-### 📫 Contact the Founder
-Interested in collaborating or testing the beta? Reach out!
+# Main Interface
+url_input = st.text_input("Paste your Shopify Product Link here:", "https://yourstore.com/product")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    if st.button("Generate TikTok Script"):
+        st.success("Analyzing product details... Script generated!")
+
+with col2:
+    if st.button("Create Viral Video"):
+        st.info("Video engine starting... Check back in 60 seconds.")
+
+st.write("---")
+st.caption("PulseLink Prototype v1.0 | Built for TEF 2026")
