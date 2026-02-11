@@ -1,19 +1,31 @@
+
 import streamlit as st
 
 # Page setup
 st.set_page_config(page_title="PulseLink Prototype", layout="centered")
 
-# Corrected CSS for the Blue and Cream look
+# Improved CSS for readability
 st.markdown("""
     <style>
-    .stApp { background-color: #FFFDD0; }
+    .stApp { background-color: #FFFDD0; } /* Cream Background */
+    
+    /* Make Title and Subheader Dark Navy */
+    h1, h2, h3, p, span, label { 
+        color: #002147 !important; 
+        font-weight: bold;
+    }
+    
+    /* Professional Blue Buttons */
     .stButton>button { 
         background-color: #007BFF; 
-        color: white; 
+        color: white !important; 
         border-radius: 8px; 
-        width: 100%;
+        border: none;
+        padding: 10px;
     }
-    h1 { color: #003366; }
+    
+    /* Input field text color */
+    input { color: #002147 !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -21,10 +33,18 @@ st.title("🔗 PulseLink")
 st.subheader("AI Automation for Global Dropshippers")
 
 st.write("---")
-url_input = st.text_input("Paste Shopify Link:", "https://yourstore.com/product")
 
-if st.button("Generate TikTok Script"):
-    st.success("Script generated successfully!")
+# Instructions for judges
+st.info("Prototype Demo: Paste a link below to see the automation bridge in action.")
 
-if st.button("Create Viral Video"):
-    st.info("Video engine starting...")
+url_input = st.text_input("Paste Shopify Product Link:", "https://yourstore.com/product")
+
+# Functional buttons
+if st.button("🚀 Generate TikTok Script"):
+    st.success("Analysis Complete: Script optimized for high-conversion!")
+
+if st.button("🎬 Create Viral Video"):
+    st.warning("Video Rendering Engine: Initializing preview...")
+
+st.write("---")
+st.caption("PulseLink v1.0 | Developed by Esther David for TEF 2026")
