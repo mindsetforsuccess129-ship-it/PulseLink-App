@@ -1,9 +1,17 @@
+import subprocess
+import sys
+
+# This forces the app to install the missing tool manually if it's not found
+try:
+    from bs4 import BeautifulSoup
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "beautifulsoup4"])
+    from bs4 import BeautifulSoup
 import streamlit as st
 import pandas as pd
 import time
 import random
 import requests
-from bs4 import BeautifulSoup
 
 # 1. PAGE CONFIG
 st.set_page_config(page_title="PulseLink Pro", page_icon="🚀", layout="wide")
