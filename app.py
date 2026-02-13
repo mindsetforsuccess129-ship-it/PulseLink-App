@@ -3,7 +3,6 @@ import pandas as pd
 import time
 import random
 import requests
-from bs4 import BeautifulSoup
 
 # 1. PAGE CONFIG
 st.set_page_config(page_title="PulseLink Pro", page_icon="🚀", layout="wide")
