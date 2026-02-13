@@ -70,13 +70,33 @@ with col1:
 with col2:
     st.subheader("🎥 9:16 Ad Preview")
     if "current_ad" in st.session_state:
+        # 1. Show the Image
         st.image(st.session_state.current_ad['image'], use_container_width=True)
-        st.text_area("AI Script:", value=st.session_state.current_ad['caption'], height=100)
-        if st.button("🚀 Push to Social"):
-            st.balloons()
-            st.success("Live on TikTok!")
+        
+        # 2. Show the Script (Editable)
+        final_caption = st.text_area("Edit AI Script:", value=st.session_state.current_ad['caption'], height=150)
+        
+        # 3. Action Buttons (Side by Side)
+        btn_col1, btn_col2 = st.columns(2)
+        
+        with btn_col1:
+            if st.button("🚀 Push to Social"):
+                with st.status("Posting...", expanded=False):
+                    time.sleep(random.uniform(3, 6))
+                st.balloons()
+                st.success("Live on TikTok!")
+        
+        with btn_col2:
+            st.download_button(
+                label="📥 Download Script",
+                data=final_caption,
+                file_name=f"PulseLink_Ad.txt",
+                mime="text/plain"
+            )
     else:
-        st.caption("Waiting for link...")
+        st.write("---")
+        st.caption("Enter a product link and click 'Generate' to see your AI-powered ad preview here.")
+
 
 # 6. ACTIVITY
 st.divider()
