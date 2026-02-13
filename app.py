@@ -14,22 +14,42 @@ except ImportError:
 # 2. PAGE CONFIG
 st.set_page_config(page_title="PulseLink Pro", page_icon="🚀", layout="wide")
 
-# 3. THE SCRAPER LOGIC
-class PulseLinkSDK:
-    def get_product_data(self, url):
-        if not HAS_BS4:
-            return {"image": "https://via.placeholder.com/400x711?text=System+Updating...", "title": "Product"}
-        try:
-            headers = {"User-Agent": "Mozilla/5.0"}
-            response = requests.get(url, headers=headers, timeout=5)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            img_tag = soup.find("meta", property="og:image")
-            img_url = img_tag["content"] if img_tag else "https://via.placeholder.com/400x711?text=9:16+Preview"
-            title_tag = soup.find("title")
-            raw_title = title_tag.string.split('|')[0].strip() if title_tag else "this item"
-            return {"image": img_url, "title": raw_title}
-        except:
-            return {"image": "https://via.placeholder.com/400x711?text=9:16+Preview", "title": "product"}
+# 3. SIDEBAR (The Complete Panel)
+with st.sidebar:
+    # 1. Marketing Icon
+    st.image("https://cdn-icons-png.flaticon.com/512/1998/1998087.png", width=80) 
+    st.title("PulseLink Panel")
+    
+    st.divider()
+    
+    # 2. Video Settings
+    st.subheader("🎬 Video Settings")
+    video_style = st.selectbox("Select Video Style:", ["Cinematic", "Hype/Fast-Paced", "Minimalist/Clean"])
+    
+    st.divider()
+    
+    # 3. Revenue Calculator (This is the part you were missing!)
+    st.subheader("💰 Revenue Estimator")
+    st.caption("Estimate earnings based on views")
+    
+    # The Slider
+    views = st.slider("Expected Views:", min_value=1000, max_value=100000, value=5000, step=1000)
+    
+    # The Calculation
+    est_revenue = (views * 0.02) * 25.0
+    
+    # Display the Result
+    st.metric(label="Potential Revenue", value=f"${est_revenue:,.2f}")
+    st.info("Based on 2% conversion @ $25/sale")
+    
+    st.divider()
+    
+    # 4. System Status
+    if HAS_BS4:
+        st.success("✅ Scraper: Active")
+    else:
+        st.warning("⏳ Scraper: Initializing...")
+
 
 # 4. SIDEBAR
 with st.sidebar:
