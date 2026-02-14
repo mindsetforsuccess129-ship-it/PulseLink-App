@@ -17,19 +17,12 @@ st.set_page_config(page_title="PulseLink Pro", page_icon="🚀", layout="wide")
 # 3. THE SCRAPER BRAIN
 class PulseLinkSDK:
     def get_product_data(self, url):
-        if not HAS_BS4:
-            return {"image": "https://via.placeholder.com/400x711?text=System+Updating...", "title": "Product"}
-        try:
-            headers = {"User-Agent": "Mozilla/5.0"}
-            response = requests.get(url, headers=headers, timeout=5)
-            soup = BeautifulSoup(response.text, 'html.parser')
-            img_tag = soup.find("meta", property="og:image")
-            img_url = img_tag["content"] if img_tag else "https://via.placeholder.com/400x711?text=9:16+Preview"
-            title_tag = soup.find("title")
-            raw_title = title_tag.string.split('|')[0].strip() if title_tag else "this item"
-            return {"image": img_url, "title": raw_title}
-        except:
-            return {"image": "https://via.placeholder.com/400x711?text=9:16+Preview", "title": "product"}
+        # This skips the scraper and gives you an instant result for the demo
+        return {
+            "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000", 
+            "title": "Premium Pulse-Tech Watch"
+        }
+
 
 # 4. SIDEBAR (One instance only!)
 with st.sidebar:
