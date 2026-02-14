@@ -67,18 +67,19 @@ with col1:
 
 with col2:
     st.subheader("🎥 9:16 Ad Preview")
-    if "current_ad" in st.session_state:
-        st.image(st.session_state.current_ad['image'], use_container_width=True)
-        final_cap = st.text_area("AI Script:", value=st.session_state.current_ad['caption'], height=100)
-        
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("🚀 Push to Social"):
-                st.balloons()
-        with c2:
-            st.download_button("📥 Download", data=final_cap, file_name="script.txt")
-    else:
-        st.caption("Enter a link to see preview...")
+    
+                cap = f"""
+--- PULSELINK AI AD SCRIPT ---
+PRODUCT: {data['title']}
+STYLE: {video_style}
+                
+[HOOK]: 🚨 New Drop Alert! You guys won't believe this one.
+[BODY]: I just found the {data['title']} and it is a total game changer for your daily routine. ✨
+[CTA]: Click the link in my bio to grab yours before they sell out! 
+                
+TAGS: #Viral #PulseLink #MustHave #AffiliateMarketing
+------------------------------
+"""
 
 # 6. ACTIVITY
 st.divider()
