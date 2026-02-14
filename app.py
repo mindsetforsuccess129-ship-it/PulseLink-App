@@ -95,3 +95,4 @@ st.table(pd.DataFrame({
     "Product": [st.session_state.get('current_ad', {'title': '---'})['title'], "Vintage Watch"],
     "Status": ["✅ Ready", "✅ Posted"]
 }))
+# Force Refresh
