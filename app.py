@@ -72,7 +72,6 @@ with col2:
                 # Ensure this next line starts exactly under 'data'
                 cap = f"--- PULSELINK SCRIPT ---\nPRODUCT: {data['title']}\nSTYLE: {video_style}\n\nHOOK: 🚨 New Drop!\nBODY: The {data['title']} is a game changer. ✨\nCTA: Link in bio!\n\n#PulseLink #Viral"
                 st.session_state.current_ad = {"image": data['image'], "caption": cap, "title": data['title']}
-
 # 6. ACTIVITY
 st.divider()
 st.subheader("📊 Recent Activity")
