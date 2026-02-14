@@ -67,19 +67,12 @@ with col1:
 
 with col2:
     st.subheader("🎥 9:16 Ad Preview")
-    
-                cap = f"""
---- PULSELINK AI AD SCRIPT ---
-PRODUCT: {data['title']}
-STYLE: {video_style}
-                
-[HOOK]: 🚨 New Drop Alert! You guys won't believe this one.
-[BODY]: I just found the {data['title']} and it is a total game changer for your daily routine. ✨
-[CTA]: Click the link in my bio to grab yours before they sell out! 
-                
-TAGS: #Viral #PulseLink #MustHave #AffiliateMarketing
-------------------------------
-"""
+                with st.spinner("AI analyzing link..."):
+                data = sdk.get_product_data(url_input)
+                # Ensure this next line starts exactly under 'data'
+                cap = f"--- PULSELINK SCRIPT ---\nPRODUCT: {data['title']}\nSTYLE: {video_style}\n\nHOOK: 🚨 New Drop!\nBODY: The {data['title']} is a game changer. ✨\nCTA: Link in bio!\n\n#PulseLink #Viral"
+                st.session_state.current_ad = {"image": data['image'], "caption": cap, "title": data['title']}
+
 
 # 6. ACTIVITY
 st.divider()
